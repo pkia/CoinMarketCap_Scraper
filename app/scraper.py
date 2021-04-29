@@ -25,3 +25,5 @@ while True:
             driver.find_element_by_xpath("/html/body/div/div[1]/div[2]/div/div[1]/div/div[3]/button").click()
         except (ElementClickInterceptedException, TimeoutException, NoSuchElementException):
              break
+         
+#gg
