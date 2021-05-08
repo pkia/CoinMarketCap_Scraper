@@ -26,3 +26,14 @@ while True:
         except (ElementClickInterceptedException, TimeoutException, NoSuchElementException):
              break
         
+html_soup = BeautifulSoup(browser.page_source, 'html.parser')
+            ticker = html_soup.find_all('td', class_ = 'cmc-table__cell cmc-table__cell--sortable cmc-table__cell--left cmc-table__cell--sort-by__symbol')
+            coin_name = html_soup.find_all('a', class_ = 'cmc-link')
+            for x in range(len(ticker)):
+                coin_name = coin_name[x]
+                ticker = ticker[x]
+                coin_name = coin_name.a.text
+                ticker = ticker.div.text
+                print(ticker)
+                tickers.append(ticker)
+                coin_names.append(coin_name)
