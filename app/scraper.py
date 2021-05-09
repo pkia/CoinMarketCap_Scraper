@@ -24,16 +24,14 @@ while True:
         try:
             driver.find_element_by_xpath("/html/body/div/div[1]/div[2]/div/div[1]/div/div[3]/button").click()
         except (ElementClickInterceptedException, TimeoutException, NoSuchElementException):
-             break
-        
-html_soup = BeautifulSoup(browser.page_source, 'html.parser')
+            html_soup = BeautifulSoup(driver.page_source, 'html.parser')
             ticker = html_soup.find_all('td', class_ = 'cmc-table__cell cmc-table__cell--sortable cmc-table__cell--left cmc-table__cell--sort-by__symbol')
-            coin_name = html_soup.find_all('a', class_ = 'cmc-link')
+            coin_name = html_soup.find_all('div', class_ ="sc-1kxikfi-0 fjclfm cmc-table__column-name")
             for x in range(len(ticker)):
                 coin_name = coin_name[x]
                 ticker = ticker[x]
                 coin_name = coin_name.a.text
                 ticker = ticker.div.text
-                print(ticker)
                 tickers.append(ticker)
                 coin_names.append(coin_name)
+        
