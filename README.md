@@ -1,4 +1,4 @@
-# www.coinmarketcap.com ticker scraper
+# www.coinmarketcap.com scraper
 A program that scrapes ticker and coin names from coinmarketcap
 
 # Setup
@@ -10,9 +10,8 @@ A program that scrapes ticker and coin names from coinmarketcap
     * ```
       pip install -r requirements.txt
       ```
-    * if pip not installed https://pip.pypa.io/en/stable/installing/
-
+   
 # Usage
 ```
-python3 lecture_scraper.py
+python scraper.py
 ```
