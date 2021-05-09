@@ -1,4 +1,5 @@
-from datetime import datetime, date, time
+from datetime import datetime, date
+import time
 from bs4 import BeautifulSoup
 import os
 import pandas as pd
@@ -36,7 +37,9 @@ while True:
             for x in range(len(ticker)):
                 name = coin_name[x].a.text
                 c_ticker = ticker[x].div.text
+                if c_ticker in tickers:
+                    break
                 tickers.append(c_ticker)
                 coin_names.append(name)
-            crypto_df = pd.Dataframe({'Coin_name': coin_names, 'ticker': tickers})
-            crypto_df.to_csv('crypto_scrape{}.csv' % now)
+            crypto_df = pd.DataFrame({'Coin_name': coin_names, 'ticker': tickers})
+            crypto_df.to_csv('crypto_scrape.csv')
