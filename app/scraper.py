@@ -1,10 +1,16 @@
-import time
+from datetime import datetime, date, time
 from bs4 import BeautifulSoup
+import os
+import pandas as pd
 from requests import get
 from selenium import webdriver
-driver = webdriver.Chrome()
-from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException, TimeoutException
-
+options = webdriver.ChromeOptions()
+options.add_argument('--ignore-certificate-errors')
+options.add_argument('--incognito')
+options.add_argument('--headless')
+driver = webdriver.Chrome(options=options)
+from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementClickInterceptedException
+now = datetime.now()
 
 driver.get("https://coinmarketcap.com/all/views/all/")
 html_soup = BeautifulSoup
@@ -28,10 +34,9 @@ while True:
             ticker = html_soup.find_all('td', class_ = 'cmc-table__cell cmc-table__cell--sortable cmc-table__cell--left cmc-table__cell--sort-by__symbol')
             coin_name = html_soup.find_all('div', class_ ="sc-1kxikfi-0 fjclfm cmc-table__column-name")
             for x in range(len(ticker)):
-                coin_name = coin_name[x]
-                ticker = ticker[x]
-                coin_name = coin_name.a.text
-                ticker = ticker.div.text
-                tickers.append(ticker)
-                coin_names.append(coin_name)
-        
+                name = coin_name[x].a.text
+                c_ticker = ticker[x].div.text
+                tickers.append(c_ticker)
+                coin_names.append(name)
+            crypto_df = pd.Dataframe({'Coin_name': coin_names, 'ticker': tickers})
+            crypto_df.to_csv('crypto_scrape{}.csv' % now)
