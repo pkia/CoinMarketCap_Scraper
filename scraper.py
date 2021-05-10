@@ -47,5 +47,5 @@ for cur_name in coin_name:
     
 crypto_df = pd.DataFrame({'Coin_name': coin_names, 'ticker': tickers})
 crypto_df.to_csv('crypto_scrape.csv')
-webdriver.close()
+driver.quit()
             
