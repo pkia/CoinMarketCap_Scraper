@@ -1,4 +1,4 @@
-# www.coinmarketcap.com scraper
+# CoinMarketCap Scraper
 A program that scrapes ticker and coin names from [CoinMarketCap](https://coinmarketcap.com/all/views/all/)
 
 # Setup
