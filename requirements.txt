@@ -1,5 +1,4 @@
 aiodns==2.0.0
-aiohttp==3.7.3
 aiohttp-socks==0.5.5
 async-timeout==3.0.1
 attrs==20.3.0
@@ -39,7 +38,6 @@ pywin32==227
 pywinpty==0.5.7
 pyzmq==20.0.0
 QtPy==1.9.0
-reportlab==3.5.60
 requests==2.25.1
 schedule==1.0.0
 selenium==3.141.0
@@ -48,7 +46,6 @@ six==1.15.0
 soupsieve==2.1
 terminado==0.9.4
 typing-extensions==3.7.4.3
-urllib3==1.26.3
 webencodings==0.5.1
 widgetsnbextension==3.5.1
 wincertstore==0.2
